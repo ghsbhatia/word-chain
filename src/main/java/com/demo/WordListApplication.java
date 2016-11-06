@@ -14,15 +14,15 @@ import com.demo.service.SearchService;
 @SpringBootApplication
 public class WordListApplication {
 
-	public static void main(String[] args) throws Exception {
-		if(args.length != 2) {
-		    System.out.println("usage: java -jar target/word-miner.jar <url> <size>");
-		    System.exit(0);
-		}
-	    ApplicationContext appContext = SpringApplication.run(WordListApplication.class, args);
-		Long startTime = new Date().getTime();
-	    IndexerService indexerService = (IndexerService) appContext.getBean(IndexerService.class);
-		SearchService searchService = (SearchService) appContext.getBean(SearchService.class);
+    public static void main(String[] args) throws Exception {
+        if(args.length != 2) {
+            System.out.println("usage: java -jar target/word-miner.jar <url> <size>");
+            System.exit(0);
+        }
+        ApplicationContext appContext = SpringApplication.run(WordListApplication.class, args);
+        Long startTime = new Date().getTime();
+        IndexerService indexerService = (IndexerService) appContext.getBean(IndexerService.class);
+        SearchService searchService = (SearchService) appContext.getBean(SearchService.class);
         indexerService.index(new URL(args[0]));
         List<String> resultList = searchService.findLongestWordChain(Integer.valueOf(args[1]));
         Long endTime = new Date().getTime();
