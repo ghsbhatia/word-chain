@@ -27,5 +27,5 @@ public class WordListApplication {
         List<String> resultList = searchService.findLongestWordChain(Integer.valueOf(args[1]));
         Long endTime = new Date().getTime();
         System.out.println("Elapsed Time (ms) " + (endTime - startTime) + " Result:" + resultList);
-	}
+    }
 }
